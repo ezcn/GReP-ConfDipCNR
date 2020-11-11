@@ -1,0 +1,44 @@
+
+%Indicate the field of the work, why this field is important, and what has already been done (with proper citations).
+%Indicate a gap, raise a research question, or challenge prior work in this territory.
+%outline the purpose and announce the present research, clearly indicating what is novel and why it is significant.
+%avoid: repeating the abstract; providing unnecessary background information; exaggerating the importance of the work; claiming novelty without a proper literature search. 
+
+%%%%%%%%%%%%%%%%%• Present the problem and the proposed solution %%%%%%%%%%%%%%%%%• Presents nature and scope of the problem investigated
+\textbf{Background.} Miscarriage, i.e. the spontaneous termination of a pregnancy before 24 weeks of gestation, occurs in  10-15\% of all pregnancies and has both environmental and genetic causes.\cite{larsen2013new,ammon2012systematic, andersen2000maternal} Miscarriages are often the result of chromosomal aneuploidies of the gametes but they can also have non random genetic causes like small mutations (SNPs and indels), both de-novo or inherited from parents. Miscarriages are mostly studied using parental genetic information\cite{pereza2017systematic} %and at a resolution that leaves unexplored the vast majority of the genome. %Comparative genomic hybridization detects variants of several thousand base pairs \cite{robberecht2009diagnosis, kudesia2014rescue,mathur2014miscarriage} while targeted resequencing resolves point mutations. Both are currently the most accurate methods for the genetic analysis of parental DNA of miscarriages but are not sensitive to small variants, or target only a few coding regions. 
+%On a different approach, 
+and the only genome-wide genetic association study is also based on maternal information.\cite{laisk2019genetic} Depending on the mode of inheritance the study of parental genome might be ineffective as it will reveal only half of the inheritance that was effectively passed to the embryo and it would miss \textit{de novo} mutations. Extending therefore the analysis to fetal genomes is the necessary next step to fully understand the genetics of miscarriages with an approach that systematically targets also small-size genetic variants. 
+%The incidence of genomic abnormalities in RPL is estimated to be around 50\% \cite{van2012genetics}. 
+
+%%%%%%%%%%%%%%%%% • Reviews the pertinent literature to orient the reader
+%%literature: miscarriages sequences 
+DNA sequence information of miscarried fetuses has been already used to determine the genetic component of miscarriages in some studies.\cite{rajcan2020next, filges2015exome} Most studies adopt a family-based approach often with focus on a reduced range of fetal phenotype, integrating pedigree and parental genomic data, and considering either candidate genes\cite{bondeson2017nonsense, dohrn2015ecel1, wilbe2015musk, cristofoli2017novel, rae2015novel, thomas2012tctn3} or whole-exome %Some among those focusing only on embryos target candidates genes. Examples are the identification of a mutation in the X-linked gene \textit{FOXP3} in siblings male miscarriages \cite{rae2015novel}, and the identification of a truncating \textit{TCTN3} mutations in unrelated embryos\cite{thomas2012tctn3}. A number of studies focuses instead on exome
+sequences.\cite{shamseldin2015identification, qiao2016whole,fu2018whole, meier2019exome, yates2017whole}% One study selects only variants transmitted to both sibling miscarriages \cite{qiao2016whole}, others limit to autozygous variants\cite{thomas2012tctn3, shamseldin2015identification}, some focus on delivering accurate diagnosis \cite{meier2019exome}.
+All these studies consider number of cases in the order of the tens and in most cases are motivated by phenotypic information mostly deriving from ultrasound scans. 
+%%%%%%%%%%%%%focus in idiopathic 
+Two other studies adopt a cohort-based approach analyzing up to thousands of embryonic genomes with a range of phenotypes with focus on evaluating the diagnostic potential of exome sequencing\cite{zhao2020exome} and identification of genes essential for the embryonic development.\cite{chen2017characterization}
+%%literature: prioritization pipelines 
+Because the number of embryos considerd is too small for genetic association analysis to be effective, all studies perform sequencing followed by variant annotation and prioritization, investigating supposedly euploid embryos with focus on rare variation. Nevertheless they always use different criteria to select the variants never releasing code to fully reproduce the variant prioritization, making it difficult to replicate results and perform comparisons.  
+
+%%%%%%%%%%%%%%%%%• States the method of the experiment
+%In this study, we performed whole genome sequencing on euploid embryos from idiopathic spontaneous pregnancy losses and developed \gp\cite{gp2020}, a pipeline to prioritize putatively causative variants. As first step \gp performs filtering of high-quality genomic variants based on prediction of the functional effect of the variants and using a set of parameters that can be specified by the user. This first selection is completed by filters for technical artifacts (e.g. mapping errors, read depth) and a filter for random selection of genes in a control cohort through resampling.% Finally, it is possible to test if the frequency of the selected variants is compare the frq  
+
+
+%%%%%%%%%%%%%%%%%• State the principle results of the experiment
+
+
+
+
+%Human reproduction is highly ineffective and it is estimated that 10-20\% of all pregnancies end in early miscarriage or early pregnancy loss (PL) during the first trimester [REF SILVIA] and up to 50\% of cases of RPL do not have a clearly defined etiology\cite{practice2012evaluation}. Miscarriage is defined as the death of the fetus within 20-28 week of gestation\cite{pmid27994187, pmid25055407, pmid25944391, pmid11821293, stephenson2002cytogenetic, pmid25681385, pmid29858908}. Recurrent pregnancy loss (RPL) is defined as the loss of two or more consecutive pregnancies\cite{green2019review}. RPL has a high impact on public health since it affects up to 3-5\% of couples[REF PER QUESTO]. For 50-60\% of RPL cases the cause are known to be structural genetic, endocrine, anatomic, thrombophilic, autoimmune, and environmental factors, however for the remaining 40-50\% the causes are unknown\cite{pmid27994187, pmid25944391, pmid11821293, stephenson2002cytogenetic, pmid22796359, pmid22672580, pmid25681385, gaboon2013recurrent, pmid30642578}.\\
+
+
+%The diagnosis of miscarriages is based on embryo heart activity and gestational sac features revealed by ultrasonography\cite{doubilet2013diagnostic}. Nevertheless, diagnosis take place only after the death of the embryo, and only few cases there are followed-up to understand the genetic causes with techniques that can discriminate anouplidies (kariotyping, quantitative PCR) or large deleterious copy number variants (comparative genomic hybridization), while no information is available on small-size DNA changes incompatible with life. Therefore, the current ability of inform prognosis and manage decision in cases of perinatal lethality is limited, with important consequences in counseling for RPLs and \textit{in-vitro} fertilization.\\
+
+%Among PL caused by genetic defects, it is estimated that 50-70\% [check PERCENT] is due to meiotic chromosome segregation errors, whose frquency increases with increasing maternal age\cite{pmid30393965, pmid10864550, pmid20041396}. Sperm DNA fragmentation caused by oxidative stress also causes PL through impairment of placentation \cite{pmid2972074, pmid30448091, pmid30602480}. %as well as increased mutation rate in sperm that increases with male age\cite{kong2012rate}. 
+%To date, PLs are studied using parental genetic information \cite{laisk2019genetic, pereza2017systematic}. Only a few studies have focused on deep understanding of the genetic causes through the analysis of the fetal genome sequence\cite{filges2015exome}[ADD REF]. However, these few cases never considered whole genome sequencing but rather concentrated on restricted target regions related to specific medical cases. Therefore, very little is known about the genetic mutations that effectively cause the death of the embryo and there is the need for large scale projects that systematically target small-size genetic mutations. % to help understanding unexplained PLs. 
+
+
+%In this study we develop a pipeline for selecting cases of idiopathic PL to be studied through whole-genome sequencing of DNA from product of conception (PoC).  \\
+%We find that... \\
+%Our study will facilitate the development of a larger-scale project for developing molecular diagnosis of PL. 
+

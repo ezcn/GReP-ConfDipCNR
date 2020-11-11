@@ -1,0 +1,52 @@
+\section*{Methods}
+
+\subsection*{Women sample and data collection}
+Text here 
+
+\subsection*{Embryo data and samples collection}
+Samples collection was done by the Unit of Obstetrics and Gynecology of the Sant’Anna University Hospital in Ferrara, Italy, from 2016 to 2020. It was approved by the local Ethical Committee (approval number CE/FE 170475) and carried out in compliance with the Helsinki Declaration. All participants provided written informed consents before recruitment. The inclusion criteria were: age in the range 18–42 years; gestational age within the first 12 weeks. Maximum gestational age for cases of voluntary termination of pregnancy was ninety days, according to the Italian law, namely Bill 194, Article 4. 
+
+
+Anonymous data about age, body mass index, menarche age, previous pregnancies, and geographical origin were considered for this study. Data cleaning, refining, and analysis (summary statistics, hypothesis testing) were performed using R \cite{R}.
+
+
+Fresh embryonic tissues were analyzed the same day of collection. Chorionic villi (CV) were separated from the maternal decidua in sterility under a hood using a stereomicroscope (Leica Microsystems Srl, All Microscopy and Histology, Milan, I-20142 Italy). The villi were stored at -20\textdegree  C for a few months or at 4\textdegree  C in RPMI media for not more than a week before proceeding to homogenization and DNA extraction. We explored a range of possibilities for DNA preparation from CV that includes two methods of tissue homogenization and three methods of DNA isolation. We do not observe significant difference between homogenization techniques, therefore we proceeded with dry homogenization that is technically less challenging (Figure \ref{fig:dna}A). Similarly, in the case of DNA isolation we considered two types of resin (Valentina) and one membrane (Valentina) and we do not observe significant differences in yield neither among the techniques or among samples from maternal blood, voluntary termination of pregnancy and miscarriages but slightly higher range of yield for one type of resin (Figure \ref{fig:dna}B and Figure \ref{fig:dnayeld}). Quantification of genomic DNA was done with Qubit® 2.0 Fluorometer (Invitrogen) according to manufacture instructions.
+
+%Genomic DNA (gDNA) was extracted from chorionic villi dissected from abortion tissue specimens using QIAamp DNA Blood Mini Kit (Qiagen), and with Instagene TM Matrix (Bio-Rad) according to manufacturer protocols \textit{(QIAamp DNA Mini and Blood Mini Handbook 05/2016. Instruction Manual, InstaGene™ Matrix, LIT544 Rev G)}
+
+--Maternal contamination XXXX 
+%TBA  \todo{MERIGEN}
+
+\subsection*{Detection of chromosomal aneuploidies in embryos} 
+\subsubsection*{Detection of sex and numerical anomalies through quantitative PCR}
+A rapid screening of sex and numerical anomalies for chromosomes 13, 15, 16, 18, 21, 22 and X was carried out with the miscarriage DNA samples performing five multiplex PCR assays. PCR assays A, B 1,2 and 3 were performed in a total volume of 25μl containing 40–100ng of genomic DNA, 10mM dNTP (Roche), 6-30 pmol (final concentration) of each primer, 1×Fast taq polymerase buffer (15mmol/l MgCl 2 ) (Roche), and 2.5 U of Fasta taq polymerase (Roche). PCR conditions were as follows: denaturation at 95\textdegree C for 10 min followed by 10 cycles consisting of melting at 95\textdegree C for 1 min, annealing at 65\textdegree C (-1\textdegree C / cycle) for 1 minutes, and then extension at 72\textdegree C for 40 seconds, then for 23 cycles at 95\textdegree C for 1 min, 55\textdegree C for 1 min, and 72\textdegree C for 1 min. Final extension was for 10min at 72\textdegree C and at 60\textdegree C for 60 min. Fluorescence-labelled PCR products were electrophoresed in an CEQ 8000 Backman by combining 40 μl of Hi-Di Formamide and 0.5 μl of DNA size standard 400 (Backman); The resulting PCR products can be visualized and quantified as peak areas of the respective repeat lengths. In normal heterozygous subjects, the QF- PCR product of each STR should show two peaks with similar fluorescent activities and thus a ratio of peak areas close to 1:1 (ranging from 0.8 to 1.4:1). A trisomy is suspected when the ratio is  above or below this range (peak area ratios ≤ 0.6 and ≥ 1.8) (trisomic diallelic);otherwise there are three alleles of equal peak area with a ratio of 1:1:1 (trisomictriallelic). The presence of trisomic triallelic or diallelic patterns for at least two different STRs on the same chromosome is considered as evidence of trisomy. Trisomic patterns observed for all chromosome-specific STRs are indicative of triploidy. Therefore accurate X chromosome dosage, to perform diagnosis of X monosomy, can be assessed by TAF9L marker allowing This gene has a high degree of sequence identity between chromosome 3 and chromosome X; primers on this gene amplify a 3 b.p. deletion generating a chromosome X specific product of 141 b.p. and a chromosome 3 specific product of 144 b.p.
+
+\subsubsection*{Comparative Genomic Hybridization} 
+--Imma 
+Agilent SurePrint G3 CGH-only. Log-ratio produced by the Agilent CytoGenomics v3.0.4 software 
+
+Beside the Agilent software XXX , data were analyzed using custom R scripting (Figure \ref{fig:cnvmethods}). The LogRatio from the arrays were segmented into regions of estimated equal copy number using both the method implemented in the Agilent, and the Penalized least square implemented in the copynumber R package (PLS, \cite{nilsen2012copynumber}) and classified as copy number of gains or losses (copy number variants, CNV) using as criteria at least five probes and Zscore <0.0016 (SD*4)\cite{vermeesch2005molecular}. 
+ %Circular Binary Segmentation (CBS)\cite{Venkatraman2018}, 
+
+
+
+\subsection*{DNA sequencing and sequence analysis}
+Whole-genome sequencing of the embryonic DNA was done through a service provider (Macrogen s.r.l). In particular, libraries for sequencing were prepared using the Illumina TruSeq DNA PCR-free Library (insert size 350bp) and samples were sequenced at 30X mapped (~110Gb) 150bp PE on HiSeqX. Data were released in as fastq files. -- Exome sequencing of the women XXXXXX
+%SILVIA We obtained XX GB of data per individual, with.95.8 of the genome covered more than XX times.
+
+Reads in the fastq file of both embryo and women sequence data were aligned against the reference genome GRChg38.p12 \cite{rosenbloom2015ucsc} using \textsc{bwa}\cite(Li 2009){} and \textsc{samtools}\cite{}. Variant calling was done using \textsc{freebayes} \cite{garrison2012haplotype}. The resulting vcf files were refined in three steps: (i) \textsc{vcffilter} \cite{vcflib} was used to filter variants for quality score>20, leaving only variants with 99\% accuracy of genotype call; (ii) \textsc{vt} \cite{tan2015unified} was used to normalize variants; (iii) \textsc{vt}  \cite{tan2015unified} was used to deconstruct multiallelic variants. Refined vcf files were compressed and indexed using samtools \cite{}. Variants were annotated for functional effects and allele frequency in other populations using Variant Effect Predictor (VEP, McLaren2016).  
+
+The \gp pipeline for variant prioritization is written in Python and the code is publicly avaiable (\url{https://github.com/ezcn/grep}). 
+ 
+The computational work has been executed on the IT resources of the ReCaS-Bari data center, which have been made available by two projects financed by the MIUR (Italian Ministry for Education, University and Re-search) in the "PON Ricerca e Competitività 2007-2013" Program: ReCaS (Azione I - Interventi di rafforzamento strutturale, PONa3\_00052, Avviso 254/Ric) and PRISMA (Asse II - Sostegno all'innovazione, PON04a2\_A)"
+
+
+%Variant calling, phasing and annotation 
+%Raw paired end sequencing data was mapped on the reference genome  GRCh38 using BWA (Li 2009) and variant calling was done using Freebayes (Garrison 2012), discovering on average 436k variants per sample with Phred-scaled quality scores >20. Information on functional annotations and Combined Annotation Dependent Depletion (CADD) for variable sites was obtained using Variant Effect Predictor (McLaren 2016). Phasing was done using Beagle 5.1 (Browning 2018) under standard parameters.  
+
+
+\subsection*{PCA Analysis, Reactome} 
+%Approximately 15,000 autosomal exonic SNPs from HapMapPhase 325were used to conduct PCA analysis. SNPs were prunedusing PLINK26based on LD (variance inflation factor thresholdof 2), and only common variants (MAF>5\%) were used in thePCA analysis. PCA outlier analyses were performed by projectingthe case samples onto HapMap3 samples using EIGENSOFT
+
+
+

@@ -1,0 +1,176 @@
+\documentclass[fleqn,12pt]{wlscirep}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{placeins}
+\usepackage{graphicx}
+\usepackage{lscape}
+\usepackage{todonotes}
+%\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{lscape}
+
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
+\newcommand{\gp}[]{\textsc{gp }}
+
+%\title{Prioritization for diagnosis through whole-genome sequencing of product of conception from idiopathic pregnancy losses }
+\title{Prioritization of causative genomic variants in miscarried embryos from idiopathic pregnancy losses }
+
+\author[1,2+]{Silvia Buonaiuto}
+\author[3+]{Imma Di Biase}
+\author[4]{Valentina Aleotti}
+\author[5]{Adriano De Marino}
+\author[1,6]{Gianluca Damaggio}
+\author[7]{Marco Chierici}
+\author[8]{Madhuri Pulijala}
+\author[3]{Palmira D’Ambrosio} 
+\author[3]{Gabriella Esposito}
+\author[8]{Qasim Ayub}
+\author[7]{Cesare Furlanello}
+\author[9]{Nicole Soranzo}
+\author[4]{Michele Rubini}
+\author[5]{Antonio Capalbo}
+\author[3]{Sebastiano Di Biase}
+\author[1*]{Vincenza Colonna}
+%\author[]{{\color{blue} nomi memorial exomes} }
+\affil[1]{National Research Council, Institute of Genetics and Biophysics Adriano Buzzati-Traverso, Napoli, Italy}
+\affil[2]{University of Campania Luigi Vanvitelli,Department of Environmental, Biological and Pharmaceutical Sciences and Technologies,Caserta, Italy}
+\affil[3]{MeriGen Research s.r.l., Naples, Italy}
+\affil[4]{University of Ferrara, Ferrara, Italy}
+\affil[5]{Igenomix Italy, Marostica, Italy}
+\affil[6]{University of Naples Federico II,Department of Biology, Naples, Italy}
+\affil[7]{FBK-Fondazione Bruno Kessler, Povo (Trento), Italy}
+\affil[8]{Monash University Malaysia Genomics Facility, School of Science, Bandar Sunway}
+\affil[9]{Wellcome Sanger Institute, Hinxton, UK}
+\affil[*]{Correspondence: vincenza.colonna@igb.cnr.it (V.C.)}
+\affil[+]{these authors contributed equally to this work}
+
+
+\begin{document}
+
+\flushbottom
+\maketitle
+% * <john.hammersley@gmail.com> 2015-02-09T12:07:31.197Z:
+%
+%  Click the title above to edit the author information and abstract
+%
+
+%%%%%%%%%%%%%%%%%• Present the problem and the proposed solution %%%%%%%%%%%%%%%%%• Presents nature and scope of the problem investigated
+\textbf{Background.} Miscarriage, i.e. the spontaneous termination of a pregnancy before 24 weeks of gestation, occurs in  10-15\% of all pregnancies and has both environmental and genetic causes.\cite{larsen2013new,ammon2012systematic, andersen2000maternal} Miscarriages are often caused by chromosomal aneuploidies of the gametes but they can also have non random genetic causes like small-size mutations both \textit{de-novo} or inherited. Miscarriages are mostly studied using parental genetic information\cite{pereza2017systematic, laisk2019genetic},  %and at a resolution that leaves unexplored the vast majority of the genome. %Comparative genomic hybridization detects variants of several thousand base pairs \cite{robberecht2009diagnosis, kudesia2014rescue,mathur2014miscarriage} while targeted resequencing resolves point mutations. Both are currently the most accurate methods for the genetic analysis of parental DNA of miscarriages but are not sensitive to small variants, or target only a few coding regions. 
+%On a different approach, and the only genome-wide genetic association study is also based on maternal information.\cite{} 
+%Depending on the mode of inheritance the study of parental genome 
+which might be ineffective as it will reveal only half of the inheritance in the embryo and it would miss \textit{de novo} mutations. Extending therefore the analysis to fetal genomes is the necessary next step 
+%to fully understand the genetics of miscarriages 
+together with an approach that systematically targets also small-size genetic variants. 
+%The incidence of genomic abnormalities in RPL is estimated to be around 50\% \cite{van2012genetics}. 
+
+%%%%%%%%%%%%%%%%% • Reviews the pertinent literature to orient the reader
+%%literature: miscarriages sequences 
+DNA sequence information of miscarried fetuses has already been used to study genetic components of miscarriages.\cite{rajcan2020next, filges2015exome} Most studies on candidate genes\cite{bondeson2017nonsense, dohrn2015ecel1, wilbe2015musk, cristofoli2017novel, rae2015novel, thomas2012tctn3} or exomes\cite{shamseldin2015identification, qiao2016whole,fu2018whole, meier2019exome, yates2017whole} consider number of cases in the order of the tens and adopt a family-based approach often with focus on a reduced range of fetal phenotypes deriving from ultrasound scans. 
+%, integrating pedigree and parental genomic data, and considering either candidate genes\cite{bondeson2017nonsense, dohrn2015ecel1, wilbe2015musk, cristofoli2017novel, rae2015novel, thomas2012tctn3} or whole-exome %Some among those focusing only on embryos target candidates genes. Examples are the identification of a mutation in the X-linked gene \textit{FOXP3} in siblings male miscarriages \cite{rae2015novel}, and the identification of a truncating \textit{TCTN3} mutations in unrelated embryos\cite{thomas2012tctn3}. A number of studies focuses instead on exome
+%sequences.\cite{shamseldin2015identification, qiao2016whole,fu2018whole, meier2019exome, yates2017whole}% One study selects only variants transmitted to both sibling miscarriages \cite{qiao2016whole}, others limit to autozygous variants\cite{thomas2012tctn3, shamseldin2015identification}, some focus on delivering accurate diagnosis \cite{meier2019exome}.
+%All these studies  and in most cases are motivated by phenotypic information deriving from ultrasound scans. 
+%%%%%%%%%%%%%focus in idiopathic 
+Two studies adopt a cohort-based approach analyzing up to thousands of embryonic genomes in a wide range of phenotypes with focus on evaluating the diagnostic potential of exome sequencing\cite{zhao2020exome} and identification of genes essential for the embryonic development.\cite{chen2017characterization}
+%%literature: prioritization pipelines 
+Because the number of embryos considered is too small for genetic association analysis to be effective, all studies perform sequencing followed by variant annotation and prioritization, investigating rare variation in supposedly euploid embryos. Nevertheless always different criteria are used to select the variants, and in any case the code to fully reproduce the variant prioritization is not available, making it difficult to replicate results and perform comparisons.
+
+
+\textbf{Results.} To understand genetic susceptibility to miscarriage we studied the genome of 46 miscarried embryos %and nine women (not related to the forty-six embryos) experiencing spontaneous pregnancy termination. 
+%The embryos gestational age at pregnancy termination, calculated as the interval between the pregnancy termination date and the last menstruation date, ranges from 7.14 to 19.43 weeks (median is 10.3 weeks). Twenty-one embryos classifies as the product of recurrent miscarriages \cite{eshre2018eshre}. The mothers of the embryos are mostly of European origin (87\%) and their median age at the date of collection was 36.7$\pm$5.9 years, with no significant difference between first and recurrent cases (Figure \ref{fig:embryostats}, Mann–Whitney p-value=0.02). For the mothers of the embryos medical records report no major comorbidities. Folic acid was taken by 71\% of the mothers with no difference between first and recurrent cases (Figure \ref{fig:embryostats}, Chi-square p-value=0.96). Median body mass index and menarche age are comparable between first and recurrent cases, as well as comparable to a group of control women (Figure \ref{fig:embryostats}). Altogether, from the available medical records, we suppose that the recruited 
+from mothers in the range of healthy adult individuals. %The nine women with recurrent clinical miscarriage had an average of 4 previous clinical miscarriages (SD=2.7, range 3-11), average age of 33 years (SD=6; range 23-40), average BMI within the range of normality (24.6; SD=3.9), and ovarian reserve in the XX percentile by the mean age (Anti-Mullerian hormone mean 2.1 pmol/l; SD=2.1).
+%It is known from literature that roughly xx\% of the miscarriages in the first trimester are due to large chromosomal aneuploidies, such as trisomies or deletions of large chromosomal chunks \cite{goddijn2000genetic,zhang2009genetic}. In this study we want to focus on cases in which the genome is euploid, therefore 
+After screening for chromosomal aneuploidies, 32.6\% of samples were euploid and could be sequenced while 56.6\% of the embryos presented aneuploidies. %The most common aneuploidy in our data set is the trisomy of chromosome 22 (26.9\%), followed by trisomy of chromosome 16 (15.4\%). In particular, a first round of detection of aneuploidies on chromosomes 13, 15, 16, 18, 21, 22, X, and Y through Short Tandem Repeats analysis discarded 45.7\% of samples, %These types of repeats (tetra- or penta-nucleotide) are often expected to be found in heterozygosis, therefore triploidy is assumed when three alleles are found at several markers along a chromosome (complete) or part of it (partial). Similarly, uniparental disomy for a targeted region or chromosome is assumed when only one parental allele is amplified. %and a subsequent analysis through comparative genomic hybridization and copy number %variation detection form low-coverage sequencing discarded another 10.9\% of the samples. Finally, a number of embryos (10.9\%) dropped off the analysis due to low-quality DNA or maternal contamination.
+%After ascertaining euploidy, the exome of the nine women was sequenced using Agilent SureSelect whole-exome capture and Illumina sequencing technology on the NovaSeq 6000 Series Sequencer(Next Generation Solutions, Hong Kong, China), while 
+The whole genome of ten embryos was sequenced using Illumina short-reads at 30X coverage and 11M single-nucleotide polymorphisms (SNPs) and 2M small insertions or deletions were identified.% , while from the exome data of the women we identified 1.7M SNPs and 276k indels.
+%In the set of embryos genomes, we identified 11041,557 single-nucleotide polymorphisms (SNPs), 1980256 small insertions or deletions (indels), and XX copy number variants (CNVs). In the set of women we identified 1738895 SNPs and 275652 indels.
+
+
+%5493 genes in hgdp for exomes
+%1323 discarded and 76% retained
+%\subsection*{Prioritization of genetic variants in coding genomic regions} 
+We developed \gp,\cite{gp2020} a pipeline to prioritize putatively causative variants in coding regions. \gp performs filtering of high-quality genomic variants based on functional predictions and using a set of parameters that can be specified by the user. After that, \gp filters for technical artifacts and for random selection of genes in a control cohort through resampling. 
+\gp uses functional annotations of genomic variants, information from publicly available sequence data of presumably healthy individuals, and, if available, knowledge of genes involved in the trait under study. % \gp currently analyze coding regions and performs four filtering steps (Fig.\ref{fig:pipeline}). The first filter (Filter I) retains variants based on: (i) a user-defined threshold of allele frequency in control populations; (ii) an overall impact on the gene product classified as moderate or high [REF]; (iii) the combined property of being putatively damaging (quantified by the CADD score [REF]) and located in genes intolerant to loss of function (determined by the pLI score [REF]). In addition it is possible to incorporate one or more user-defined lists of genes relevant to the trait under study, and take this into account when applying Filter I. Variants retained by Filter I (hits) are further filtered to control for false positives with Filters II and III. Finally, Filter IV excludes private variants with read depth outside the range found in non-private ones.   
+%Filter II removes variants in genes with too many hits. Filter III controls for the chance of random occurrence of genes based on replicates of Filter I analysis in a large control population. In practice it removes all the genes that pass Filter I a user-defined-fraction of times across a user-defined-number of replicates. 
+We applied the \gp pipeline to data from the high-coverage whole-genome sequences of the embryos % the women (unrelated to embryos). For Filter I we set allele frequency <0.05\% in the 1000 Genomes\cite{1000genome2015global} and gnomAD\cite{lek2016analysis} reference populations, while the functional effect of the variant within the gene context was taken into account in two ways: either selecting for putatively deleterious variants (CADD score >90th percentile) in genes highly intolerant to loss of function (pLI score >0.9), or selecting for variants in genes known to be involved in early embryonic development. In particular for this last option we included five lists of genes, namely genes involved in embryo development (Gene Ontology GO:0009790), genes lethal during embryonic stages \cite{dawes2019gene}, essential for embryo development \cite{dawes2019gene}, genes discovered through the Deciphering Developmental Disorders project [REF DD], and a manually curated list of candidate genes known to be involved in miscarriages. We requested the variant to satisfy one or both these criteria: (i) be in a gene present in at least two of the five lists or (ii) have CADD score above the 90th percentile and be in a gene with pLI>0.9. Overall, filter I retained 1,038 and 728 variants (hits) in embryo and mothers, respectively.   
+%Filter II removed variants in genes with >5 hits. With few exceptions, we observed that the majority of genes (99th percentile) has less than five hits, even if there is no significant correlation between number of hits and gene length (Spearman r=XX p-value=xx, Figure \ref{fig:filters}A). Genes with >5 hits have more paralogues than genes with <5\% (???) and hits in gene with >5 hits are enriched for private variants  We concluded that variants found in gene with more than five hits are likely to be sequencing and alignment artifacts and therefore are discarded. 
+%For Filter III we 
+using as control population 929 individuals from the Human Genome Diversity Project\cite{bergstrom2019insights} from which we resampled 100 times ten individuals.
+%On each resampled set we performed Filter I analysis and recorded the genes that were retained. Overall 5,488 unique genes were retained in controls with different frequencies in samples across replicates (Figure \ref{fig:filters}B ). When considering the 95th percentile, 1,531 genes are found >5\% of times across replicates, therefore hits within these genes were removed by filter III. Because the criteria used for Filter I were identical between embryos and mothers, and because the numerosity was very similar, we performed resampling only once and applied the outcome to both analyses.
+%Filter II and III, retained 447 and 359 hits in embryo and mothers, respectively of which 21\% in the embryos and 42\% in the women are private with respect to 1000 Genomes and gnomAD data sets. While in the embryos the read depth is comparable between private and non-privates variants, in women private variants have significantly lower coverage compared to non-private (Figure \ref{fig:filters}C-D, KS test p-value=XX, F test p-value=XXX). Therefore, to further control for possible artifacts due to scanty cverage, filter IV further removes hits which are private variants with read depth outside the range found in non-private ones.   
+
+\gp prioritized 439 unique variants in 399 genes in the ten embryonic sequences. %(Fig.\ref{fig:resembryo}). %The genes prioritized in women are slightly enriched for genes belonging to mitochondrial translation initiation (R-HSA-5368286), elongation (R-HSA-5389840), and termination (R-HSA-5419276) pathways (p-value=0.0002, Benjamini-Hochberg adjusted p-value=0.0574, FDR=0.056). This enrichment is due to eight genes selected by \gp in six women due to missense mutations (Table \ref{tab:mito}).  --More about the eight genes %(\textit{MRPL15}, \textit{MRPL34}, \textit{MRPL37}, \textit{MRPS15}, \textit{MRPS21}, \textit{MRPS23}, \textit{MRPS28}, and \textit{OXA1L}) 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\textit{Properties and biological significance of the prioritized variants and genes}. 
+%\subsubsection*{Mutations in \textit{STAG2},\textit{TLE4}, \textit{FMNL2}, and \textit{FRMPD3} in the embryos} 
+4.1\% of the prioritized variants % stop gains/loss, frameshift indels, and variants that disrupt splicing sites, all 
+classify as having high impact on the gene products, while missense mutations prevail among the variant with moderate effect. 18.8\% of the prioritized genes are not in the lists of candidate genes used by \gp as input during the prioritization, demonstrating that \gp is robust to detection of genes never investigated before.% in relationship to the phenotype under study. 
+%Averages per embryos are 48.9$\pm$8.0 genomic variants in 47.8$\pm$7.7 genes coding for 113.5$\pm$24.6 transcripts (Figure \ref{fig:resembryo}B). %For almost all genes \gp retains one variant per embryo, with few exception (five cases with two e and one with three variants per gene), as shown in Figure \ref{fig:resembryo}B, where the allele dosage and impact are also shown. %--Shared genes/variants 
+
+We identified genetic variants in genes involved in embryonic development. Among them   
+%validation merigen? 
+%The male embryo AS030 carries 
+one extremely rare high-impact alteration of a splice site in \textit{STAG2}, coding %(rs913664484, G frequency is 4.7e-05 in 42.7k individuals from gnomeAD\cite{lek2016analysis})that changes one of the two basis at the 5' end of the first intron of the 
+for the cohesin complex subunit\cite{cuadrado2020specialized,mcnicoll2013cohesin}  for which  % (high impact). 
+%\textit{STAG2} %is on the X chromosome and 
+inactivation in mouse is lethal\cite{de2020essential} and only mildly-deleterious mutations are seen in living human males.\cite{mullegama2019mutations}  
+%cohesin subunit SA-2 \cite{cuadrado2020specialized}, a ring-shaped protein complex that brings into close proximity two different DNA molecules or two distant parts of the same DNA molecule \cite{mcnicoll2013cohesin}. In mouse, inactivation \textit{Stag2} causes early embryo lethality \cite{de2020essential}, and % mutations in \textit{STAG2} have been discovered in children with developmental disorders (REF DDD). Interestingly, 
+%only mildly-deleterious mutations have been found in living males \cite{mullegama2019mutations}. 
+%The embryo AS036 carries a
+We also found an heterozygous missense mutation in the \textit{TLE4} % (ENSG00000106829, synonym \textit{GRG-4})
+gene, % that %causes a substitution of a polar amino acid with another polar amino acid (Ser>Tre) in the 7 exon of the gene, corresponding to a low complexity domain of the protein. The rs41307447 polymorphism is tolerated (SIFT score 0.18) and supposed to be benign (PolyPhen score 0.003), nevertheless the \textit{TLE4} gene 
+%is classified as highly intolerant to loss of function (pLI score 0.999).% and the CADD score associated to rs41307447 is in the 99.8th percentile. 
+%\textit{TLE4} is 
+a trascriptional repressor of
+%the Groucho-family expressed in the 
+embryonic stem cells % where it repress 
+naive pluripotency as target of Notch,\cite{menchero2019transitions, laing2015gro} also expressed in the extravillous trophoblasts as part of the Wnt pathway,% that promotes implantation, trophoblast invasion, and endo-metrialfunction
+\cite{sonderegger2010wnt, meinhardt2014wnt} physically interacting with a region on chromosome 9 associated to miscarriages.\cite{laisk2019genetic}  
+%recent association study in a cohort of 750 cases of
+%women experiencing recurrent miscarriages found a signal on chromosome 9 %(rs7859844) 
+%in a genomic region physically interacting with \textit{TLE4} , corroborating the hypothesis of association between variation in \textit{TLE4} and miscarriages. 
+
+% AS093, AS090, AS087, AS065, AS036) 
+%Five embryos share one copy of an haplotype composed of two T alleles 4bp apart (rs866373641, rs750755379) in the \textit{FMNL2} gene% (Table \ref{tab:fmnl2}). 
+%The two alleles exists at moderate-to high frequency in human populations% (Table \ref{tab:fmnl2})
+%and are in perfect linkage disequilibrium (r\textsuperscript{2}=1) in the embryos, as well as in other cohorts (r\textsuperscript{2}= 1 in HGDP).% hgdp etc..). 
+
+
+\textbf{Future perspective.} We are interested in understanding genetic causes of miscarriages in a larger cohort of embryo samples under collection. In this pilot we developed a robust approach to investigate coding regions. The next logical extension will be to non-coding genomic regions, as well as to a more comprehensive set of variation, including copy number and structural variants. 
+
+
+
+%\include{discussion}
+%\include{methods}
+\bibliography{sample}
+\section*{Keywords}
+miscarriages, variant prioritization, whole-genome DNA sequence
+\section*{Contacts}
+vincenza.colonna@igb.cnr.it\\
+silvia.buonaiuto@igb.cnr.it
+\section*{Websites}
+\url{https://colonnalab.github.io/laboratory_WebPage/}
+\url{https://github.com/ezcn/grep}
+
+%\FloatBarrier
+%\include{figures}
+
+%\FloatBarrier
+%\include{tables}
+
+%\beginsupplement
+%\section*{Supplementary Information}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection*{Supplementary Tables}
+%\include{supptables}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection*{Supplementary Figures}
+%\include{suppfigure}
+
+
+\end{document}
